@@ -1,0 +1,26 @@
+{
+  "name": "screepsbadgeservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tedivm/ScreepsBadgeService.git"
+  },
+  "author": "Robert Hafner <tedivm@tedivm.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tedivm/ScreepsBadgeService/issues"
+  },
+  "homepage": "https://github.com/tedivm/ScreepsBadgeService#readme",
+  "dependencies": {
+    "apicache": "^0.8.4",
+    "express": "^4.15.2",
+    "lodash": "^4.17.4",
+    "node-fetch": "^1.6.3",
+    "svg2png": "^4.1.1"
+  }
+}

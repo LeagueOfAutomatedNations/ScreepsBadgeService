@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Screeps Badge Service</title>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+
+  </head>
+  <body>
+    <p>This site offers a simple URL based API that builds badges for Screeps
+      players on the fly. By simply playing the player's username in the URL
+      you will get a badge.
+    </p>
+    <ul>
+      <li>users/:username.html</li>
+      <li>users/:username.png</li>
+      <li>users/:username.svg</li>
+    </ul>
+  </body>
+  <script>
+    var prefix = window.location.protocol + window.location.host + window.location.pathname
+    $("li").prepend( prefix );
+  </script>
+</html>
