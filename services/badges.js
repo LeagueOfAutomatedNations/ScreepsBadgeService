@@ -383,10 +383,10 @@ var get_svg_xml = function (badgeDefinition, size=250) {
   return xml
 }
 
-module.exports.getBadgeByName = function (username) {
+module.exports.getBadgeByName = function (username, size=250) {
   return ScreepsAPI.userdata_from_username(username)
   .then(function(data){
-    return get_svg_xml(data.user.badge)
+    return get_svg_xml(data.user.badge, size)
   })
   .then(function(xml){
     return xml
@@ -396,6 +396,6 @@ module.exports.getBadgeByName = function (username) {
   })
 }
 
-module.exports.getBadgeFromDefinition = function (badgeDefinition) {
-  return get_svg_xml(badgeDefinition)
+module.exports.getBadgeFromDefinition = function (badgeDefinition, size=250) {
+  return get_svg_xml(badgeDefinition, size)
 }
