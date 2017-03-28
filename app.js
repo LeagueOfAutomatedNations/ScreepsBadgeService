@@ -13,6 +13,8 @@ var settings = require('./.settings.json')
 screeps.username = settings['email']
 screeps.password = settings['password']
 
+var httpcache = 30 * 60 // time in seconds
+var httpmaxstale = 30 * 24 * 60 * 60
 var cachetime = '45 minutes'
 var badge_size = 250
 var alliance_watermark_size = Math.round(badge_size/3)
@@ -36,6 +38,8 @@ app.get('/users/:username.html', cache(cachetime), function (req, res) {
 app.get('/users/:username.svg', cache(cachetime), function (req, res) {
   badges.getBadgeByName(req.params['username'], badge_size)
   .then(function(xml){
+    res.setHeader("Cache-Control", "public, max-age="+httpcache+", max-stale="+httpmaxstale);
+    res.setHeader("Expires", new Date(Date.now() + httpcache*1000).toUTCString());
     res.setHeader('content-type', 'image/svg+xml');
     res.send(xml)
   })
@@ -47,6 +51,8 @@ app.get('/users/:username.png', cache(cachetime), function (req, res) {
   badges.getBadgeByName(req.params['username'], badge_size)
   .then(svg2png)
   .then(function(buffer){
+    res.setHeader("Cache-Control", "public, max-age="+httpcache+", max-stale="+httpmaxstale);
+    res.setHeader("Expires", new Date(Date.now() + httpcache*1000).toUTCString());
     res.setHeader('content-type', 'image/png');
     res.send(buffer)
   })
@@ -87,6 +93,8 @@ app.get('/alliances/:username.png', cache(cachetime), function (req, res) {
     return badgeImageBuffer.toBuffer()
   })
   .then(function(buffer){
+    res.setHeader("Cache-Control", "public, max-age="+httpcache+", max-stale="+httpmaxstale);
+    res.setHeader("Expires", new Date(Date.now() + httpcache*1000).toUTCString());
     res.setHeader('content-type', 'image/png');
     res.send(buffer)
   })
