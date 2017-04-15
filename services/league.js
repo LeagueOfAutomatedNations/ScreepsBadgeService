@@ -50,6 +50,7 @@ class LeagueAPI {
   }
 
   getUserAlliance(user) {
+    this.loadData()
     if(!this.users[user.toLowerCase()]) {
       return false
     }
@@ -57,6 +58,7 @@ class LeagueAPI {
   }
 
   getLogoUrl(alliance) {
+    this.loadData()
     if(!this.alliances[alliance] || !this.alliances[alliance]['logo']) {
       return false
     }
