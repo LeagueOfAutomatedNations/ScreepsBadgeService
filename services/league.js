@@ -15,10 +15,11 @@ class LeagueAPI {
       if(now - this.loaded < 5*60) {
         return
       }
+      this.loaded = false
     }
 
     var that = this
-    if(!this.data) {
+    if(!this.data || !this.loaded) {
       fetch(leagueurl + 'alliances.js')
       .then(function(response){
         if(!response.ok) {
@@ -41,6 +42,7 @@ class LeagueAPI {
             that.users[user.toLowerCase()] = alliance
           }
         }
+        that.loaded = Math.round(new Date().getTime()/1000)
       })
       .catch(function(err){
         console.log(err.message)
