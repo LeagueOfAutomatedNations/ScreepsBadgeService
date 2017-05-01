@@ -13,9 +13,9 @@ var settings = require('./.settings.json')
 screeps.username = settings['email']
 screeps.password = settings['password']
 
-var httpcache = 30 * 60 // time in seconds
+var httpcache = 2 * 60 // time in seconds
 var httpmaxstale = 30 * 24 * 60 * 60
-var cachetime = '45 minutes'
+var cachetime = '2 minutes'
 var badge_size = 250
 var alliance_watermark_size = Math.round(badge_size/3)
 
