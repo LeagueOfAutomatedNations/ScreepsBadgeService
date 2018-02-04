@@ -22,7 +22,7 @@ var alliance_watermark_size = Math.round(badge_size/3)
 
 /* Basic Intro Page */
 app.get('/', function (req, res) {
-  var data = fs.readFileSync('./html/index.html', 'utf-8');
+  var data = fs.readFileSync(`${__dirname}/html/index.html`, 'utf-8');
   res.send(data)
 })
 
